@@ -1,0 +1,84 @@
+@startuml title Diagrama de clases - Ciberforo
+
+enum UserRole{
+USER,
+MODERATOR
+}
+enum ReportType{
+   THEME,
+   COMMENT
+}
+enum ReportStatus{
+        PENDING,
+        REVIEWED,
+        RESPONDED,
+        CLOSED
+}
+enum ReactionType{
+    LIKE,
+    DISLIKE
+}
+
+class User {
+    - userId : int
+    - username : String
+    - email : String
+    - passwordHash : String
+    - role : String
+    - isBanned : boolean
+    - isDeleted : boolean
+    - createdAt : LocalDateTime
+    - updatedAt : LocalDateTime
+}
+
+class Topic {
+    - topicId : int
+    - title : String
+    - content : String
+    - isDeleted : boolean
+    - createdAt : LocalDateTime
+    - updatedAt : LocalDateTime
+}
+
+class Comment {
+    - commentId : int
+    - content : String
+    - isDeleted : boolean
+    - createdAt : LocalDateTime
+    - updatedAt : LocalDateTime
+}
+
+class TopicReaction {
+    - reactionId : int
+    - reactionType : String
+    - createdAt : LocalDateTime
+}
+
+class CommentReaction {
+    - reactionId : int
+    - reactionType : String
+    - createdAt : LocalDateTime
+}
+
+class Report {
+    - reportId : int
+    - reportType : String
+    - reason : String
+    - status : String
+    - createdAt : LocalDateTime
+}
+
+User "1" -- "0..*" Topic
+User "1" -- "0..*" Comment
+
+Topic *-- Comment
+
+User "1" -- "0..*" TopicReaction
+Topic "1" -- "0..*" TopicReaction
+
+User "1" -- "0..*" CommentReaction
+Comment "1" -- "0..*" CommentReaction
+
+User "1" -- "0..*" Report
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Guardar comentario
+actor Usuario
+participant ComentarioController
+participant ComentarioService
+participant ComentarioRepository
+Usuario -> ComentarioController: enviarFormulario(Comentario)
+activate ComentarioController
+ComentarioController -> ComentarioService: guardarComentario(Comentario)
+activate ComentarioService
+ComentarioService -> ComentarioRepository: guardarComentario(Comentario)
+activate ComentarioRepository
+ComentarioRepository --> ComentarioService: return comentario
+deactivate ComentarioRepository
+alt comentarioGuardado
+ComentarioService --> ComentarioController: guardadoExitosamente
+ComentarioController --> Usuario: mostrarMensaje("Guardado exitosamente")
+else errorAlGuardar
+ComentarioService --> ComentarioController: errorAlGuardar
+deactivate ComentarioService
+ComentarioController --> Usuario: mostrarMensaje("Error al guardar comentario")
+deactivate ComentarioController
+end
+@enduml

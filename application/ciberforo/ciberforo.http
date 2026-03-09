@@ -1,0 +1,6 @@
+@ciberforo_HostAddress = http://localhost:5124
+
+GET {{ciberforo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

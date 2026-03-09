@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Guardar Reporte
+actor Usuario
+participant ReporteController
+participant ReporteService
+participant ReporteRepository
+Usuario -> ReporteController: enviarFormulario(Reporte)
+activate ReporteController
+ReporteController -> ReporteService: guardarReporte(Reporte)
+activate ReporteService
+ReporteService -> ReporteRepository: guardarReporte(Reporte)
+activate ReporteRepository
+ReporteRepository --> ReporteService: reporteGuardado
+deactivate ReporteRepository
+alt reporteGuardado
+  ReporteService --> ReporteController: guardadoExitosamente
+  ReporteController --> Usuario: mostrarMensaje("Guardado exitosamente")
+else errorAlGuardar
+  ReporteService --> ReporteController: errorAlGuardar
+  deactivate ReporteService
+  ReporteController --> Usuario: mostrarMensaje("Error al guardar reporte")
+  deactivate ReporteController
+end
+@enduml

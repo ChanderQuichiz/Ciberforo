@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Guardar de Usuario
+actor Usuario
+participant UserController
+participant UserService
+participant UserRepository
+Usuario -> UserController: enviarFormulario(Usuario)
+activate UserController
+UserController -> UserService: guardarUsuario(Usuario)
+activate UserService
+UserService -> UserRepository: guardarUsuario(Usuario)
+activate UserRepository
+UserRepository --> UserService: return usuario
+deactivate UserRepository
+alt usuarioGuardado
+  UserService --> UserController: guardadoExitosamente
+  UserController --> Usuario: mostrarMensaje("Guardado exitosamente")
+else errorAlGuardar
+  UserService --> UserController: errorAlGuardar
+  deactivate UserService
+  UserController --> Usuario: mostrarMensaje("Error al guardar usuario")
+  deactivate UserController
+end
+@enduml

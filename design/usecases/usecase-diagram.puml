@@ -1,0 +1,43 @@
+@startuml title Diagrama de Casos - Ciberforo
+left to right direction
+
+actor Usuario
+actor Moderador
+actor Publico
+
+rectangle "Ciberforo" {
+
+  ' --- Acciones de Usuario ---
+  Usuario --> (Registrar Usuario)
+  Usuario --> (Actualizar Usuario)
+  Usuario --> (Eliminar Usuario)
+  Usuario --> (Iniciar Sesion)
+  
+  Usuario --> (Registrar Tema)
+  Usuario --> (Actualizar Tema)
+  Usuario --> (Eliminar Tema)
+  
+  Usuario --> (Registrar Comentario)
+  Usuario --> (Actualizar Comentario)
+  Usuario --> (Eliminar Comentario)
+  
+  Usuario --> (Registrar Reaccion)
+  Usuario --> (Eliminar Reaccion)
+  
+  Usuario --> (Reportar contenido / comentario)
+  
+  ' --- Acciones de Publico ---
+  Publico --> (Consultar Temas)
+  Publico --> (Consultar Comentarios)
+  Publico --> (Consultar Usuarios)
+  ' --- Acciones de Moderador ---
+ 
+  Moderador --> (Consultar Reportes)
+  Moderador --> (Banear Usuario)
+}
+
+' --- Herencias ---
+Usuario -|> Publico
+Moderador -|> Usuario
+
+@enduml

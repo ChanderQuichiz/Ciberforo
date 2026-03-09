@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Inicio de Sesión
+actor Usuario
+participant UserController
+participant UserService
+participant UserRepository
+Usuario -> UserController: enviarCredenciales(credenciales)
+activate UserController
+UserController -> UserService: iniciarSesion(credenciales)
+activate UserService
+UserService -> UserRepository: findByEmailAndPassword(email, password)
+activate UserRepository
+UserRepository --> UserService: return usuario
+deactivate UserRepository
+alt usuarioEncontrado
+  UserService --> UserController: usuarioEncontrado
+  UserController --> Usuario: crearSession()
+else usuarioNoEncontrado
+  UserService --> UserController: usuarioNoEncontrado
+  deactivate UserService
+  UserController --> Usuario: mostrarMensaje("Credenciales incorrectas")
+  deactivate UserController
+end
+@enduml

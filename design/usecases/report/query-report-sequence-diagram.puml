@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Consultar Reportes
+actor Moderador
+participant ReporteController
+participant ReporteService
+participant ReporteRepository
+Moderador -> ReporteController: solicitarReportes()
+activate ReporteController
+ReporteController -> ReporteService: obtenerReportes()
+activate ReporteService
+ReporteService -> ReporteRepository: consultarReportes()
+activate ReporteRepository
+ReporteRepository --> ReporteService: return ListaReportes
+deactivate ReporteRepository
+alt ListaReportes.length > 0
+  ReporteService --> ReporteController: return ListaReportes
+    ReporteController --> Moderador: mostrarReportes(ListaReportes)
+else
+  ReporteService --> ReporteController: noEncontrados
+    deactivate ReporteService
+    ReporteController --> Moderador: mostrarMensaje("No se encontraron reportes")
+    deactivate ReporteController
+end
+@enduml

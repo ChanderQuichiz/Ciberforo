@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Consultar Tema
+actor Publico
+participant TemaController
+participant TemaService
+participant TemaRepository
+Publico -> TemaController: solicitarTema(Tema)
+activate TemaController
+TemaController -> TemaService: obtenerTema(Tema)
+activate TemaService
+TemaService -> TemaRepository: consultarTema(Tema)
+activate TemaRepository
+TemaRepository --> TemaService: return listaTemas
+deactivate TemaRepository
+alt listaTemas.length > 0
+TemaService --> TemaController: return listaTemasEncontrados
+TemaController --> Publico: mostrarTemas(listaTemasEncontrados)
+else
+TemaService --> TemaController: noEncontrado
+deactivate TemaService
+TemaController --> Publico: mostrarMensaje("Tema no encontrado")
+deactivate TemaController
+end
+@enduml

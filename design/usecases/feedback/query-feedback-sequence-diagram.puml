@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Consultar Comentario
+actor Publico
+participant ComentarioController
+participant ComentarioService
+participant ComentarioRepository
+Publico -> ComentarioController: solicitarComentario(Comentario)
+activate ComentarioController
+ComentarioController -> ComentarioService: obtenerComentario(Comentario)
+activate ComentarioService
+ComentarioService -> ComentarioRepository: consultarComentario(Comentario)
+activate ComentarioRepository
+ComentarioRepository --> ComentarioService: return listaComentarios
+deactivate ComentarioRepository
+alt listaComentarios.length > 0
+ComentarioService --> ComentarioController: return listaComentariosEncontrados
+ComentarioController --> Publico: mostrarComentarios(listaComentariosEncontrados)
+else
+ComentarioService --> ComentarioController: noEncontrado
+deactivate ComentarioService
+ComentarioController --> Publico: mostrarMensaje("Comentario no encontrado")
+deactivate ComentarioController
+end
+@enduml

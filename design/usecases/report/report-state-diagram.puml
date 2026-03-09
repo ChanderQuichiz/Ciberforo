@@ -1,0 +1,6 @@
+@startuml title Diagrama de Estado - Reporte
+[*] --> pendiente
+pendiente --> revisado : revisarReporte()
+revisado --> respondido : responderReporte()
+respondido --> cerrado : cerrarReporte()
+@enduml

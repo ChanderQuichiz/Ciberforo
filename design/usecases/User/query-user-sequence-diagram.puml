@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Consultar usuarios
+actor Moderador
+participant UsuarioController
+participant UsuarioService
+participant UsuarioRepository
+Moderador -> UsuarioController: solicitarUsuarios()
+activate UsuarioController
+UsuarioController -> UsuarioService: obtenerUsuarios()
+activate UsuarioService
+UsuarioService -> UsuarioRepository: consultarUsuarios()
+activate UsuarioRepository
+UsuarioRepository --> UsuarioService: return ListaUsuarios
+deactivate UsuarioRepository
+alt ListaUsuarios.length > 0
+  UsuarioService --> UsuarioController: return ListaUsuarios
+    UsuarioController --> Moderador: mostrarUsuarios(ListaUsuarios)
+else
+  UsuarioService --> UsuarioController: noEncontrados
+    deactivate UsuarioService
+    UsuarioController --> Moderador: mostrarMensaje("No se encontraron usuarios")
+    deactivate UsuarioController
+end
+@enduml

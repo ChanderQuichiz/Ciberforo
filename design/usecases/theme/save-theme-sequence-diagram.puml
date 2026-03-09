@@ -1,0 +1,23 @@
+@startuml title Diagrama de Secuencia - Guardar Tema
+actor Usuario
+participant TemaController
+participant TemaService
+participant TemaRepository
+Usuario -> TemaController: enviarFormulario(Tema)
+activate TemaController
+TemaController -> TemaService: guardarTema(Tema)
+activate TemaService
+TemaService -> TemaRepository: guardarTema(Tema)
+activate TemaRepository
+TemaRepository --> TemaService: temaGuardado
+deactivate TemaRepository
+alt temaGuardado
+  TemaService --> TemaController: guardadoExitosamente
+  TemaController --> Usuario: mostrarMensaje("Guardado exitosamente")
+else errorAlGuardar
+  TemaService --> TemaController: errorAlGuardar
+  deactivate TemaService
+  TemaController --> Usuario: mostrarMensaje("Error al guardar tema")
+  deactivate TemaController
+end
+@enduml
