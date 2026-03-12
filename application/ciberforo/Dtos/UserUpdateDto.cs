@@ -8,7 +8,11 @@ public record class UserUpdateDto(
     
     [Required]
     [StringLength(50)]
-    string Username,
+    string FirstName,
+    
+    [Required]
+    [StringLength(50)]
+    string LastName,
     
     [Required]
     [StringLength(100)]

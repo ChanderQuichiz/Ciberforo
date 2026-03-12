@@ -51,7 +51,7 @@ namespace ciberforo.Controllers
             {
                 return NotFound("Usuario no encontrado");
             }
-            return Ok(user);
+            return NotFound(user);
         }
 
         [HttpDelete("delete/{id}")]
@@ -62,7 +62,7 @@ namespace ciberforo.Controllers
             {
                 return NotFound("Usuario no encontrado");
             }
-            return Ok("Usuario eliminado correctamente");
+            return NoContent();
         }
 
         [HttpPatch("ban/{id}")]
@@ -73,7 +73,7 @@ namespace ciberforo.Controllers
             {
                 return NotFound("Usuario no encontrado");
             }
-            return Ok("Usuario bloqueado correctamente");
+            return NoContent();
         }
     }
 }

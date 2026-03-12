@@ -16,7 +16,15 @@ builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddDbContext<CiberforoContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), 
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("frontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,7 +37,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-
+app.UseCors("frontend");
 app.MapControllers();
 
 app.Run();

@@ -1,4 +1,4 @@
-namespace ciberforo.Entities
+namespace ciberforo.enums
 {
     public enum ReportType
     {

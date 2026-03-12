@@ -1,0 +1,26 @@
+ <aside class="w-72 min-h-[85vh] sticky top-28 pr-6 pl-3 flex flex-col">
+      
+      <!-- Navegación -->
+      <nav class="space-y-3 mb-auto">
+        <a href="/" class="flex items-center gap-3 px-4 py-2.5 bg-[#d9d9d9] bg-opacity-50 rounded-2xl hover:bg-opacity-70 transition-all">
+          <img src="https://cdn-icons-png.flaticon.com/128/1946/1946488.png" alt="Home" class="w-9 h-9 object-contain" />
+          <span class="text-xl text-black">Home</span>
+        </a>
+        
+        <a href="/login" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl hover:bg-[#d9d9d9] hover:bg-opacity-50 transition-all">
+          <img src="https://cdn-icons-png.flaticon.com/128/456/456283.png" alt="Profile" class="w-9 h-9 object-contain" />
+          <span class="text-xl text-black">Profile</span>
+        </a>
+      </nav>
+      
+      <!-- Usuario -->
+      <div class="mt-auto mb-7 flex items-center gap-3 px-2">
+        <div class="w-12 h-12 bg-[#d9d9d9] rounded-full shrink-0"></div>
+        <div class="">
+          <p class="text-lg font-normal text-black">{{userData.firstName}}</p>
+          <p class="text-sm text-black">{{userData.email}}</p>
+        </div>
+      </div>
+      
+    </aside>
+    

@@ -1,0 +1,34 @@
+   
+   <section class="bg-white rounded-xl border border-gray-400 p-5 mb-6 shadow-sm">
+        <div class="flex items-center gap-4">
+          
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-y-2">
+                    <div class="flex-1 flex items-center gap-3">
+          <div class="w-16 h-14 bg-[#d9d9d9] rounded-full flex-shrink-0"></div>
+
+          <input 
+              type="text" 
+              placeholder="Titulo del tema" 
+              class="max-w-[60%] flex-1 h-12 px-4 bg-[#fdfdfd] border border-gray-500 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
+            formControlName="title"
+              />
+            
+            
+            
+            <button type="submit" class="relative flex items-center justify-center h-9 px-6 bg-[#66d1fc] text-white rounded-xl hover:bg-[#4fc3f5] transition-colors shadow">
+              <img src="https://cdn-icons-png.flaticon.com/128/15473/15473499.png" alt="" class="absolute left-3 w-5 h-5" />
+              <span class="text-lg pl-4">Enviar</span>
+            </button>
+        </div>
+            <div>
+              <textarea 
+              type="text" 
+              placeholder="(Contenido)" 
+              class="ml-19 w-[60%] flex-1 h-12 px-4 py-2 h-20 bg-[#fdfdfd] border border-gray-500 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400 resize-none"
+              formControlName="content"
+            ></textarea>
+            </div>
+          </form>
+        </div>
+      </section>
+      

@@ -1,0 +1,44 @@
+@startuml title Diagrama de Actividades - Ciberforo Optimizado
+
+|Publico|
+start
+:Ingresa a la aplicación;
+:Visualiza temas disponibles;
+
+if (¿Buscar tema de interés?) then (Sí)
+  :Realiza búsqueda de temas;
+endif
+
+:Selecciona un tema;
+:Visualiza contenido y comentarios;
+
+if (¿Desea iniciar sesión?) then (Sí)
+  |Seguridad|
+  if (¿Usuario registrado?) then (Sí)
+    :Ingresa credenciales;
+    if (¿Credenciales válidas?) then (Sí)
+      :Inicia sesión;
+
+      |Usuario|
+      if (¿Publicar contenido?) then (Sí)
+        :Publica tema o comentario;
+      endif
+
+      if (¿Reportar contenido?) then (Sí)
+        :Reporta contenido inapropiado;
+
+        |Moderador|
+        :Gestiona reporte (revisión/eliminación si procede);
+      endif
+
+    else (No)
+      :Muestra error de credenciales;
+    endif
+
+  else (No)
+    :Registra nueva cuenta;
+  endif
+endif
+
+stop
+@enduml

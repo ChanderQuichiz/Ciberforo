@@ -38,7 +38,8 @@ public class UserService : IUserService
         {
             UserDto userDto = new UserDto(
                 Id: user.Id,
-                Username: user.Username,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
                 Email: user.Email
             );
             return userDto;
@@ -54,7 +55,8 @@ public class UserService : IUserService
         {
             UserDto userDto = new UserDto(
                 Id: user.Id,
-                Username: user.Username,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
                 Email: user.Email
             );
             return userDto;
@@ -66,7 +68,8 @@ public class UserService : IUserService
     {
         User entity = new()
         {
-            Username = dto.Username,
+            FirstName = dto.FirstName,
+            LastName = dto.LastName,
             Email = dto.Email,
             Password = dto.Password,
             Role = UserRole.USER,
@@ -81,7 +84,8 @@ public class UserService : IUserService
         
         UserDto userDto = new UserDto(
             Id: entity.Id,
-            Username: entity.Username,
+            FirstName: entity.FirstName,
+            LastName: entity.LastName,
             Email: entity.Email
         );
         return userDto;
@@ -92,7 +96,8 @@ public class UserService : IUserService
         var user = await context.Users.FirstOrDefaultAsync(u => u.Id == dto.Id);
         if (user != null)
         {
-            user.Username = dto.Username;
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
             user.Email = dto.Email;
             user.Password = dto.Password;
             user.UpdatedAt = DateTime.UtcNow;
@@ -101,7 +106,8 @@ public class UserService : IUserService
 
             UserDto userDto = new UserDto(
                 Id: user.Id,
-                Username: user.Username,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
                 Email: user.Email
             );
             return userDto;
