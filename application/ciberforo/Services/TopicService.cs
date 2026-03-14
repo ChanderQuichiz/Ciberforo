@@ -73,6 +73,30 @@ public class TopicService : ITopicService
         return null;
     }
 
+public async Task<List<TopicDto>?> FindByTitleContaining(string title)
+{
+    var existingTopics = await context.Topics
+        .Where(t => t.Title.Contains(title))
+        .AsNoTracking()
+        .ToListAsync();
+
+    if (existingTopics.Count == 0)
+        return null;
+
+    var topicDtos = existingTopics.Select(topic => new TopicDto(
+        Id: topic.Id,
+        Title: topic.Title,
+        Content: topic.Content,
+        IsDeleted: topic.IsDeleted,
+        CreatedAt: topic.CreatedAt,
+        UpdatedAt: topic.UpdatedAt,
+        UserId: topic.UserId,
+        Userdto: null
+    )).ToList();
+
+    return topicDtos;
+}
+
     public async Task<TopicDto?> Update(TopicUpdateDto dto)
     {
         var topic = await context.Topics.FirstOrDefaultAsync(t => t.Id == dto.Id);

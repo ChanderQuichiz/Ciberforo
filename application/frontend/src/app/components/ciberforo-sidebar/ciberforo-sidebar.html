@@ -2,12 +2,12 @@
       
       <!-- Navegación -->
       <nav class="space-y-3 mb-auto">
-        <a href="/" class="flex items-center gap-3 px-4 py-2.5 bg-[#d9d9d9] bg-opacity-50 rounded-2xl hover:bg-opacity-70 transition-all">
+        <a href="/home" class="flex items-center gap-3 px-4 py-2.5 bg-[#d9d9d9] bg-opacity-50 rounded-2xl hover:bg-opacity-70 transition-all">
           <img src="https://cdn-icons-png.flaticon.com/128/1946/1946488.png" alt="Home" class="w-9 h-9 object-contain" />
           <span class="text-xl text-black">Home</span>
         </a>
         
-        <a href="/login" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl hover:bg-[#d9d9d9] hover:bg-opacity-50 transition-all">
+        <a [href]="'/profile'+userData.email.split('@')[0] " class="flex items-center gap-3 px-4 py-2.5 rounded-2xl hover:bg-[#d9d9d9] hover:bg-opacity-50 transition-all">
           <img src="https://cdn-icons-png.flaticon.com/128/456/456283.png" alt="Profile" class="w-9 h-9 object-contain" />
           <span class="text-xl text-black">Profile</span>
         </a>

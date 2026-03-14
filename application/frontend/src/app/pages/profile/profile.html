@@ -1,0 +1,72 @@
+  <!-- Header -->
+    <app-ciberforo-header></app-ciberforo-header>
+  <div class="flex container mx-auto max-w-[1600px] pt-28">
+    
+    <!-- Sidebar izquierda -->
+   <app-ciberforo-sidebar></app-ciberforo-sidebar>
+    <!-- Contenido principal -->
+    <main class="flex-1 bg-[#F4F4F4] rounded-2xl pr-4 py-6 pb-20 max-w-5xl flex flex-col items-center gap-6 mx-auto">
+      
+      <!-- Crear publicación -->
+  <div class="w-[90%] relative bg-white border-2 border-neutral-300 rounded-[10px] p-4 flex items-center gap-4">  
+    <div class=" absolute w-5 top-3 right-3" >
+      <button type="button" (click)="showDialog()" class="cursor-pointer">
+        <img src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt="Abrir dialogo de edicion" />
+      </button>
+            <p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+                <span class="p-text-secondary block mb-8">Update your information.</span>
+                <div class="flex items-center gap-4 mb-4">
+                    <label for="firstname" class="font-semibold w-24">First name</label>
+                    <input pInputText id="firstname" class="flex-auto" autocomplete="off" />
+                </div>
+                 <div class="flex items-center gap-4 mb-4">
+                    <label for="lastname" class="font-semibold w-24">Last name</label>
+                    <input pInputText id="lastname" class="flex-auto" autocomplete="off" />
+                </div>
+                <div class="flex items-center gap-4 mb-8">
+                    <label for="email" class="font-semibold w-24">Email</label>
+                    <input pInputText id="email" class="flex-auto" autocomplete="off" />
+                </div>
+                 <div class="flex items-center gap-4 mb-8">
+                    <label for="password" class="font-semibold w-24">Password</label>
+                    <input pInputText id="password" class="flex-auto" autocomplete="off" />
+                </div>
+                <div class="flex justify-end gap-2">
+                    <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+                    <p-button label="Save" (click)="visible = false" />
+                </div>
+            </p-dialog>
+
+    </div>
+     <div>
+          <img src="" class="w-30 h-30 ml-2 rounded-2xl border-2" alt="">
+    </div>     
+   <div class="flex flex-col justify-start gap-2 h-full">
+    <div>Personal Information:</div>
+    <div>
+        <table>
+            <tr>
+                <td>First name</td>
+                <td>:   Joe Santos</td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td>:   Santos</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>:   joe@gmail.com</td>
+            </tr>
+
+        </table>
+    </div>
+   </div>
+</div>
+  <div class="w-[90%] ">
+    <app-topic></app-topic>
+  </div>
+      <!-- Post 1 -->
+   
+    </main>
+    
+  </div>

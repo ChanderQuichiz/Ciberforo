@@ -75,5 +75,12 @@ namespace ciberforo.Controllers
             }
             return NoContent();
         }
+        [HttpGet("email/{email}")]
+        public async Task<ActionResult<Dtos.UserDto>> findByEmail(string email)
+        {
+            var user = await userService.findByEmail(email);
+            
+            return user != null? Ok(user): NotFound("Usuario no encontrado");
+    }
     }
 }

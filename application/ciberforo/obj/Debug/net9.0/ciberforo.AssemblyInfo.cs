@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ciberforo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ca64d644f3dd36dd660cc0e810e987aac6507bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e610ca506af1f8c63e8e4fa1aac1759de047875")]
 [assembly: System.Reflection.AssemblyProductAttribute("ciberforo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ciberforo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -15,11 +15,6 @@ public record class UserUpdateDto(
     string LastName,
     
     [Required]
-    [StringLength(100)]
-    [EmailAddress]
-    string Email,
-    
-    [Required]
     [StringLength(255)]
     string Password
 );

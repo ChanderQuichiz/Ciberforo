@@ -64,8 +64,12 @@ public class UserService : IUserService
         return null;
     }
 
-    public async Task<UserDto> create(UserCreateDto dto)
+    public async Task<UserDto?> create(UserCreateDto dto)
     {
+        if (!dto.Email.Contains("@cibertec.edu.pe"))
+        {
+            return null;
+        }
         User entity = new()
         {
             FirstName = dto.FirstName,
@@ -98,7 +102,6 @@ public class UserService : IUserService
         {
             user.FirstName = dto.FirstName;
             user.LastName = dto.LastName;
-            user.Email = dto.Email;
             user.Password = dto.Password;
             user.UpdatedAt = DateTime.UtcNow;
 
@@ -126,5 +129,20 @@ public class UserService : IUserService
             return true;
         }
         return false;
+    }
+
+    public async Task<UserDto?> findByEmail(string email)
+    {
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Email == email+"@cibertec.edu.pe");
+        if(user != null)        {
+            UserDto userDto = new UserDto(
+                Id: user.Id,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                Email: user.Email
+            );
+            return userDto;
+        }
+        return null;
     }
 }

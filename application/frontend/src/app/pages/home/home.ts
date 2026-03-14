@@ -23,15 +23,14 @@ type FeedPost = {
 })
 export class Home implements OnInit {
   router = inject(Router);
-  userData:User = JSON.parse(localStorage.getItem('userdata') as string)
-  constructor() {}
+  userData:User|null = localStorage.getItem('userdata')? JSON.parse(localStorage.getItem('userdata') as string): null;
   ngOnInit() {
     if (this.userData) {
       console.log('Usuario logueado:', this.userData);
     }
     else{
       console.log('No hay usuario logueado');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
 }
 }

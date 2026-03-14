@@ -29,7 +29,7 @@ export class Login {
                     next: (loggedInUser) => {
                       console.log('Usuario logueado exitosamente:', loggedInUser);
                       localStorage.setItem('userdata', JSON.stringify(loggedInUser));
-                      this.router.navigate(['/']);
+                      this.router.navigate(['/home']);
                     },
                       error: (error) => {
                         console.error('Credenciales incorrectas', error);
