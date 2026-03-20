@@ -33,10 +33,10 @@ export class Register {
             next: (loggedInUser) => {
               console.log('Usuario logueado exitosamente:', loggedInUser);
               localStorage.setItem('userdata', JSON.stringify(loggedInUser));
-              this.router.navigate(['/']);
+              this.router.navigate(['/home']);
             },
               error: (error) => {
-                console.error('Credenciales incorrectas', error);
+                console.error('No se pudo crear el usuario asegurate de terminar en cibertec.edu.pe:', error);
               }
           });
         },
